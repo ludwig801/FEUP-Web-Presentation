@@ -1,3 +1,8 @@
+@font-face {
+	font-family: "Roboto Mono";
+	src: url('../fonts/Roboto Mono/RobotoMono-Regular.ttf')  format('truetype');
+}
+
 * {
 	color: #DDD;
 	text-align: left;
@@ -9,7 +14,7 @@ html {
 
 html > body {
 	background-color: transparent;
-	font-family: sans-serif;
+	font-family: "Roboto Mono", serif;
 	font-size: 15px;
 }
 
@@ -86,8 +91,33 @@ article {
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
 }
 
-article > article {
-	margin-bottom: 50px;
+.collapsable a.collapse-toggle {
+	position: absolute;
+	top: 0;
+	right: 0;
+	vertical-align: middle;
+	text-align: center;
+}
+
+.collapsable .collapse-toggle > span {
+	float: right;
+	width: 0; 
+	height: 0;
+	margin-top: 8px;	
+}
+
+.collapsable .collapse-toggle > span.arrow-down {
+	border-left: 7px solid transparent;
+	border-right: 7px solid transparent;
+	
+	border-top: 10px solid #3BF;
+}
+
+.collapsable .collapse-toggle > span.arrow-up {
+	border-left: 7px solid transparent;
+	border-right: 7px solid transparent;
+	
+	border-bottom: 10px solid #3BF;
 }
 
 article.subtle {
