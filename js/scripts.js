@@ -1,5 +1,6 @@
 $(document).ready(function () {
     FillInAge();
+    CollapseBehavior();
 });
 
 function FillInAge() {
@@ -15,4 +16,34 @@ function FillInAge() {
     else if (lang == "pt") {
         ageElem.html("(" + age + " anos)");
     }
+}
+
+var animDuration = 200;
+
+function CollapseBehavior() {
+    var content = $(".content");
+    var collapsables = content.find(".collapsable");
+
+    console.log(collapsables);
+
+    $(collapsables).each(function(index, item) {
+        var jQueryItem = $(item);
+
+        var toggle = $(jQueryItem.find(".collapse-toggle"));
+        var target = $(jQueryItem.find(".collapse-target"));
+        
+        toggle.removeClass("visible");
+        toggle.addClass("");
+        target.hide();
+        
+        toggle.on("click", function() {
+            if(toggle.hasClass("visible")) {
+                target.hide(animDuration);
+            }
+            else {
+                target.show(animDuration);
+            }
+            toggle.toggleClass("visible");
+        });
+    });
 }
