@@ -39,21 +39,31 @@ a:hover {
 }
 
 footer {
-	text-align: center;
+	text-align: left;
 	position: fixed;
 	padding: 4px;
 	bottom: 0;
-	width: 100%;
+	left: 0;
+	width: 160px;
 	background-color: #222;
 	box-shadow: -10px 0 5px rgba(0, 0, 0, 0.4);
+	font-size: 12px;
+
+	transition: 0.25s;
+}
+
+@media screen and (max-width: 480px) {
+	footer {
+		text-align: center;
+		width: 100%;
+	}
 }
 
 div.content {
 	padding: 10px 10px 10px 10px;
-	background-color: rgba(127, 127, 127, 0.6);
+	background-color: transparent;
 	margin: auto;
 	width: 50%;
-	box-shadow: 0 0 8px rgba(0, 0, 0, 0.25);
 
 	transition: width 0.25s;
 }
@@ -86,9 +96,9 @@ div.content {
 article {
 	margin: 20px 20px 40px 20px;
 	padding: 10px;
-	background-color: rgba(64, 64, 64, 0.25);
-	border-radius: 2px;
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+	background-color: rgba(64, 64, 64, 0.8);
+	border-radius: 1px;
+	box-shadow: 0 0 4px rgba(0, 0, 0, 0.25);
 }
 
 .collapsable a.collapse-toggle {
@@ -120,14 +130,10 @@ article {
 	border-bottom: 10px solid #3BF;
 }
 
-article.subtle {
-	background-color: rgba(127, 127, 127, 0.25);
-}
-
 article > .title, article > .subtitle {
 	margin: -10px -10px 0px -10px;
 	border-radius: 1px;
-	border-bottom: 1px solid rgba(127, 127, 127, 0.5);
+	border-bottom: 1px solid rgba(127, 127, 127, 0.8);
 }
 
 article > .title {
@@ -139,7 +145,7 @@ article > .title {
 article > .subtitle {
 	padding: 15px 10px 10px 10px;
 	text-align: left;
-	background-color: rgba(0, 0, 0, 0.25);
+	background-color: rgba(0, 0, 0, 0.15);
 	font-size: 19px;
 }
 
@@ -147,9 +153,6 @@ article > .subtitle {
 	article {
 		margin: 10px 5px 10px 5px;
 		padding: 5px;
-		background-color: rgba(0, 0, 0, 0.25);
-		border-radius: 2px;
-		box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
 	}
 
 	article > article {
@@ -180,12 +183,12 @@ article#welcome > a > img {
 }
 
 .text-field {
-	border-radius: 2px;
+	border-radius: 1px;
 	display: table;
 	width: 100%;
 	max-width: 100%;
-	background-color: rgba(0, 0, 0, 0.25);
-	box-shadow: 0 0 5px rgba(0, 0, 0, 0.75);
+	background-color: rgba(0, 0, 0, 0.1);
+	box-shadow: 0 0 1px rgba(0, 0, 0, 0.25);
 }
 
 .text-field > span.label {
@@ -282,16 +285,14 @@ div.content ul#links > li.link > a {
 	height: 60px;
 	border-radius: 50%;
 	overflow: hidden;
-	border: 1px solid rgba(127, 127, 127, 0.5);
-	background-color: rgba(127, 127, 127, 0.75);
 	box-shadow: 0 0 0 transparent;
 
 	transition: all 0.25s;
 }
 
 div.content ul#links > li.link > a:hover {
-	background-color: rgba(255, 255, 255, 0.6);
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.75);
+	background-color: rgba(200, 200, 200, 1);
+	box-shadow: 0 0 10px rgba(127, 127, 127, 0.5);
 }
 
 div.content #links > .link > a > img {
@@ -330,8 +331,6 @@ div.content #links > .link > a#google_plus > img {
 		height: 40px;
 		border-radius: 50%;
 		overflow: hidden;
-		border: 1px solid rgba(127, 127, 127, 0.5);
-		background-color: rgba(127, 127, 127, 0.75);
 		box-shadow: 0 0 0 transparent;
 
 		transition: all 0.25s;
@@ -458,4 +457,13 @@ aside > ul > li > a:hover {
 
 aside.aside-left {
 	float: left;
+}
+
+article#license {
+	background-color: rgba(90, 90, 90, 0.8);
+}
+
+article#license img {
+	width: 20px;
+	height: 20px;
 }
