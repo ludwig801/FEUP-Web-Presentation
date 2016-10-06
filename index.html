@@ -13,99 +13,18 @@
 
   <!-- Personal stylesheet -->
   <link href="css/style.css" rel="stylesheet">
+  <link href="css/timeline.css" rel="stylesheet">
 </head>
 
 <body>
-  <img class="background" alt="background image" src="img/bg.jpg" />
-
-  <aside class="aside-left">
-    <ul>
-      <li class="title">Contents</li>
-      <li><a title="Perfil" href="#profile_info">Profile</a></li>
-      <li><a title="Percurso Académico" href="#profile_studies">Studies</a></li>
-      <li><a title="Interesses" href="#profile_preferences">Interests</a></li>
-      <li><a title="Projetos" href="#projects">Projects</a></li>
-      <li><a title="Desenvolvimento de Jogos" href="#games">Games</a></li>
-      <li><a title="Bandas Sonoras" href="#soundtracks">Soundtracks</a></li>
-    </ul>
-  </aside>
-
   <div class="content">
+
     <article id="profile_info">
-      <p class="title">Profile</p>
+      <p class="title">Luís Magalhães</p>
 
-      <div>
-        <ul id="links">
-          <li class="link">
-            <a id="linkedin" href="https://www.linkedin.com/in/luís-magalhães-386b3396?trk=nav_responsive_tab_profile_pic" target="_blank">
-              <img alt="LinkedIn Profile" src="img/icons/linkedin-logo.png" />
-            </a>
-          </li>
-          <li class="link">
-            <a id="github" href="https://github.com/ludwig801" target="_blank">
-              <img alt="Github Profile" src="img/icons/github-logo.png" />
-            </a>
-          </li>
-          <li class="link">
-            <a id="profile_photo">
-              <img alt="Profile photo" src="img/profile_photo_grayscale.jpg" />
-            </a>
-          </li>
-          <li class="link">
-            <a id="google_plus" href="https://plus.google.com/u/0/114105910970664670513" target="_blank">
-              <img alt="Google+ Profile" src="img/icons/google-plus.png" />
-            </a>
-          </li>
-          <li class="link">
-            <a id="mail_me" href="mailto:ei12054@fe.up.pt" target="top">
-              <img alt="Email Me" src="img/icons/mail.png" />
-            </a>
-          </li>
-        </ul>
-
-        <p class="text-field">
-          <span class="label">Name</span>
-          <span class="content">Luís Miguel Coelho e Magalhães</span>
-        </p>
-        <p class="text-field">
-          <span class="label">Birth Date</span>
-          <span class="content">June 5th, <span id="year_of_birth">1994</span> <span id="age"></span></span>
-        </p>
-        <p class="text-field">
-          <span class="label">Address</span>
-          <span class="content">Rua S. Pedro de Pedroso, nº 243, 4415-430 Pedroso</span>
-        </p>
-        <p class="text-field">
-          <span class="label">Contact</span>
-          <span class="content">(+351) 937 771 348</span>
-        </p>
+      <div id="profile_photo">
+        <img alt="Profile photo" src="img/profile_photo_grayscale.jpg" />
       </div>
-    </article>
-
-    <article id="profile_studies">
-      <p class="title">Studies</p>
-      <p class="text-field">
-        <span class="label label-25">2006 - 2009</span>
-        <span class="content">Escola Secundária dos Carvalhos</span>
-      </p>
-      <p class="text-field">
-        <span class="label label-25">2009 - 2012</span>
-        <span class="content">Colégio dos Carvalhos</span>
-      </p>
-      <p class="text-field">
-        <span class="label label-25">2012 - ...</span>
-        <span class="content"><a title="FEUP's Website" href="https://sigarra.up.pt/feup/en/WEB_PAGE.INICIAL" target="_blank">
-        Faculdade de Engenharia da Universidade do Porto</a>
-        <br>Master's Degree in Informatics and Computional Engineering</span>
-      </p>
-      <p class="text-field">
-        <span class="label label-25">2000 - 2014</span>
-        <span class="content">Escola de Música de Perosinho<br>Music education degree with specialization in Violin and <i>Bel Canto</i></span>
-      </p>
-      <p class="text-field">
-        <span class="label label-25">2015</span>
-        <span class="content">Participated in the Erasmus program, in Lodz, Poland</span>
-      </p>
     </article>
 
     <article id="profile_preferences">
@@ -146,6 +65,32 @@
           <li>Music-based Procedural Generation</li>
         </ul>
       </article>
+    </article>
+
+    <article id="profile_studies">
+      <p class="title">Studies</p>
+      <timeline begin="2000" end="2016">
+        <timeline-entry begin="2006" end="2009">
+          <span class="description">Escola Secundária dos Carvalhos</span>
+          <span href="" class="timespan">2006-2009 </span>
+        </timeline-entry>
+        <timeline-entry begin="2009" end="2012">
+          <span class="description">Colégio dos Carvalhos</span>
+          <span href="" class="timespan">2009-2012 </span>
+        </timeline-entry>
+        <timeline-entry begin="2012" end="2016">
+          <span href="https://www.fe.up.pt" target="_blank" class="description">FEUP - Master's Degree in Informatics and Computional Engineering</span>
+          <span href="" class="timespan">2009-... </span>
+        </timeline-entry>
+        <timeline-entry begin="2000" end="2014">
+          <span class="description">Escola de Música de Perosinho - Musics degree with specialization in Violin and Bel Canto</span>
+          <span href="" class="timespan">2000-2014 </span>
+        </timeline-entry>
+        <timeline-entry begin="2015" end="2015">
+          <span class="description">Participated in the Erasmus program, in Lodz, Poland</span>
+          <span href="" class="timespan">2005 </span>
+        </timeline-entry>
+      </timeline>
     </article>
 
     <article id="projects">
@@ -489,18 +434,33 @@
       </article>
     </article>
 
-    <article id="license" class="collapsable">
-      <p class="subtitle collapse-toggle">Website<span class="toggle-label"></span></p>
+    <article id="contacts">
+      <p class="title">Contacts</p>
 
-      <div class="collapse-target">
-        <p>This website and its content, including css styling and scripting were create by Luís Magalhães (@ 2016).<br><br>
-        The icons are from <a title="FlatIcon Website" href="https://www.flaticon.com" target="_blank">flaticon</a>, and the authors are mentioned below:
+      <div>
         <ul>
-          <li><img alt="LinkedIn Profile" src="img/icons/linkedin-logo.png" /> - SimpleIcon</li>
-          <li><img alt="Google+ Profile" src="img/icons/google-plus.png" /> - Madebyoliver</li>
-          <li><img alt="Github Profile" src="img/icons/github-logo.png" /> - Dave Gandy</li>
-          <li><img alt="Email Me" src="img/icons/mail.png" /> - SimpleIcon</li>
+          <li><a title="LinkedIn Profile" href="https://pt.linkedin.com/in/luís-magalhães-386b3396" target="_blank"><img alt="LinkedIn Profile" src="img/icons/linkedin-logo.png" /></a></li>
+          <li><a title="Github Page" href="https://github.com/ludwig801" target="_blank"><img alt="Github Page" src="img/icons/github-logo.png" /></a></li>
+          <li><a title="SoundCloud Profile" href="https://soundcloud.com/lu-s-magalh-es-6" target="_blank"><img alt="SoundCloud Profile" src="img/icons/soundcloud.png" /></a></li>
+          <li><a title="Email Luis" href="mailto:ei12054@fe.up.pt" target="_blank"><img alt="Email Me" src="img/icons/mail.png" /></a></li>
         </ul>
+      </div>
+    </article>
+
+    <article id="license" class="collapsable">
+      <p class="subtitle">Website</p>
+
+      <div>
+        <p class="collapse-toggle">This website and its content, including css styling and scripting were create by Luís Magalhães (@ 2016). The icons
+          are from
+          <a title="FlatIcon Website" href="https://www.flaticon.com" target="_blank"> flaticon</a>, and the authors are
+          mentioned below. <span class="toggle-label"></span>
+          <ul class="collapse-target">
+            <li><img alt="LinkedIn" src="img/icons/linkedin-logo.png" /> - SimpleIcon</li>
+            <li><img alt="Github" src="img/icons/github-logo.png" /> - Dave Gandy</li>
+            <li><img alt="SoundCloud" src="img/icons/soundcloud.png" /> - Pixel Buddha</li>
+            <li><img alt="Email" src="img/icons/mail.png" /> - SimpleIcon</li>
+          </ul>
       </div>
     </article>
   </div>
@@ -511,6 +471,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
   <script src="js/scripts.js"></script>
+  <script src="js/timeline.js"></script>
 </body>
 
 </html>
