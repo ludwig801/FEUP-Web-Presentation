@@ -5,46 +5,64 @@ $(document).ready(function () {
 function PlaceTimespans() {
     var $timeline = $("timeline");
     $timeline.addClass("graphic");
-    
+
     var mBegin = parseInt($timeline.attr("begin"));
     var mEnd = parseInt($timeline.attr("end"));
-    var entries = $timeline.find("timeline-entry");
+    var $entries = $($timeline.find("timeline-entry"));
 
-    $(entries).each(function (index, element) {
-        var $entry = $(element);
-
-        $entry.on("click", function() {
-            $entry.toggleClass("click");
-        });
-
-        $entry.on("mouseover", function () {
-            $entry.addClass("hover");
-            $entry.addClass("click");
-        });
-
-        $entry.on("mouseleave", function () {
-            $entry.removeClass("hover");
-            $entry.removeClass("click");
-        });
-
-        PlaceTimespan($entry, mBegin, mEnd);
-        PlaceDescription($entry);
+    $entries.each(function (index) {
+        CreateTimespanGraphic($entries, $($entries[index]), mBegin, mEnd);
     });
 }
 
-function PlaceTimespan($entry, mBegin, mEnd) {
-    var timespan = ParseTimespan($entry, mBegin, mEnd);
+function CreateTimespanGraphic($entries, $entry, mBegin, mEnd) {
+    var $target = GetTarget($entry);
 
-    if (!timespan.valid)
+    if ($target == undefined) {
+        console.error("Timeline-entry target is undefined!");
+        return false;
+    }
+
+    $target.find("span").css("display", "none");
+
+    // Add Hover/Click Behaviour
+    $entry.on("click", function () { OnClick($entries, $entry, $target) });
+    $target.on("click", function () { OnClick($entries, $entry, $target) });
+
+    $entry.on("mouseover", function () { OnMouseOver($entry, $target) });
+    $target.on("mouseover", function () { OnMouseOver($entry, $target) });
+
+    $entry.on("mouseleave", function () { OnMouseLeave($entry, $target) });
+    $target.on("mouseleave", function () { OnMouseLeave($entry, $target) });
+
+    // Add Bar Graphic
+    var timespanData = ParseTimespan($entry, mBegin, mEnd);
+
+    if (!timespanData.valid)
+        return false;
+
+    var $timespanGraphic = $(document.createElement("span"));
+    $timespanGraphic.addClass("timespan");
+    $timespanGraphic.addClass("graphic");
+    $timespanGraphic.css("margin-left", timespanData.beginPerc + "%");
+    $timespanGraphic.css("margin-right", (100 - timespanData.endPerc) + "%");
+    $entry.append($timespanGraphic);
+
+    // Add Tags
+    var $tagLeft = $(document.createElement("span"));
+    $tagLeft.attr("class", "tag tag-left");
+    $tagLeft.html(timespanData.begin);
+
+    $timespanGraphic.append($tagLeft);
+
+    if (timespanData.end == timespanData.begin)
         return;
 
-    var $timespanElem = $($entry.find(".timespan"));
-    $timespanElem.addClass("graphic");
-    $timespanElem.css("margin-left", timespan.beginPerc + "%");
-    $timespanElem.css("margin-right", (100 - timespan.endPerc) + "%");
-    $timespanElem.html("");
+    var $tagRight = $(document.createElement("span"));
+    $tagRight.attr("class", "tag tag-right");
+    $tagRight.html(timespanData.end);
 
-    AddTimespanTags($timespanElem, timespan.begin, timespan.end);
+    $timespanGraphic.append($tagRight);
 }
 
 function ParseTimespan($entry, mBegin, mEnd) {
@@ -76,24 +94,34 @@ function ParseTimespan($entry, mBegin, mEnd) {
     return timespan;
 }
 
-function PlaceDescription($entry) {
-    var $description = $($entry.find(".description"));
-    $description.addClass("graphic");
+function OnClick($others, $base, $target) {
+    $base.toggleClass("click");
+    $target.toggleClass("click");
+    $others.each(function (i) {
+        var $elem = $($others[i]);
+        var $target = GetTarget($elem);
+        
+        if($base[0] != $elem[0] && $target != undefined) {
+            OnMouseLeave($elem, $target);
+        }
+    });
 }
 
-function AddTimespanTags($timespan, begin, end) {
-    var $tagLeft = $(document.createElement("span"));
-    $tagLeft.attr("class", "tag tag-left");
-    $tagLeft.html(begin);
+function OnMouseOver($base, $target) {
+    $base.addClass("hover");
+    $base.addClass("click");
+    $target.addClass("hover");
+    $target.addClass("click");
+}
 
-    $timespan.append($tagLeft);
+function OnMouseLeave($base, $target) {
+    $base.removeClass("hover");
+    $base.removeClass("click");
+    $target.removeClass("hover");
+    $target.removeClass("click");
+}
 
-    if (end == begin)
-        return;
-
-    var $tagRight = $(document.createElement("span"));
-    $tagRight.attr("class", "tag tag-right");
-    $tagRight.html(end);
-
-    $timespan.append($tagRight);
+function GetTarget($obj) {
+    var $target = $($($obj.attr("target"))[0]);
+    return $target;
 }
